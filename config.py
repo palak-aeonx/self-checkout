@@ -1,4 +1,14 @@
-DATABASE = 'cart.db'
+from dotenv import load_dotenv
+import os
+
+load_dotenv() 
+
+DATABASE_CONFIG = {
+    'host': os.getenv('DATABASE_HOST', 'localhost'),
+    'user': os.getenv('DATABASE_USER', 'root'),
+    'password': os.getenv('DATABASE_PASSWORD', ''),
+    'database': os.getenv('DATABASE_NAME', 'cart_db')
+}
 
 DEBUG = True
 
@@ -13,21 +23,13 @@ PRODUCT_PRICES = {
     'cake': 40,
     'book': 20,
     'cup': 50,
-    'scissors' : 20
+    'scissors': 20
 }
 
-AWS_ACCESS_KEY_ID = 'AKIA2O72OMDFGOD547AR'
-AWS_SECRET_ACCESS_KEY = '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'
-AWS_BUCKET_NAME = 'retail-store-inventory'
-AWS_REGION = 'ap-northeast-3'
+AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
+AWS_BUCKET_NAME = os.getenv('AWS_BUCKET_NAME', 'retail-store-inventory')
+AWS_REGION = os.getenv('AWS_REGION', 'ap-northeast-3')
 
-DATABASE_CONFIG = {
-    'host': 'localhost',  
-    'user': 'root',
-    'password': 'palakthapa123',
-    'database': 'cart_db'
-}
-
-# Razorpay Credentials
-RAZORPAY_KEY_ID = 'rzp_test_YQHLfieP6V3pq9'
-RAZORPAY_SECRET_KEY = 'eQ4jn727RS4LyzXWbRz3zdUJ'
+RAZORPAY_KEY_ID = os.getenv('RAZORPAY_KEY_ID')
+RAZORPAY_SECRET_KEY = os.getenv('RAZORPAY_SECRET_KEY')
